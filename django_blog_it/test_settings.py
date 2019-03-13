@@ -28,13 +28,12 @@ INSTALLED_APPS = (
     'django_blog_it.posts',
 )
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR + 'sqlite3.db'
-    }
-}
-ALLOWED_HOSTS = ["127.0.0", "localhost"]
+
+import dj_database_url
+
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+ALLOWED_HOSTS = ["127.0.0", "localhost","*"]
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
