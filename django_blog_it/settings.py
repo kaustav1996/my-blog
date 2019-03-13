@@ -8,7 +8,7 @@ MEDIA_ROOT = settings.MEDIA_ROOT if settings.MEDIA_ROOT else os.path.join(BASE_D
 
 DISQUS_SHORTNAME = getattr(settings, 'DISQUS_SHORTNAME', '')
 
-BLOG_TITLE = "My Django Blog"
-BLOG_DESCRIPTION = "Rapid development of web applications"
-BLOG_KEYWORDS = "django, python, webframework"
-BLOG_AUTHOR = "Micropyramid"
+BLOG_TITLE = "Kaustav Banerhee"
+BLOG_DESCRIPTION = "Travel , Music , Videos and Geeky Fun"
+BLOG_KEYWORDS = "travel , music , video , song , movie , geek , comics , anime"
+BLOG_AUTHOR = "kauxtav1996"
