@@ -1041,7 +1041,8 @@ def fetch_app_access_token(fb_app_id, fb_app_secret):
 		'&grant_type=client_credentials')
     if resp.getcode() == 200:
         print(resp.read().decode('utf-8'))
-        return resp.read().decode('utf-8').split("=")[0]
+        print(json.loads(resp.read().decode('utf-8'))['access_token'])
+        return json.loads(resp.read().decode('utf-8'))['access_token']
     else:
         return None
 
@@ -1056,9 +1057,6 @@ def facebook_login(request):
         # }
         # accesstoken = requests.get('https://graph.facebook.com/v3.2/oauth/access_token',params=args)
         accesstoken=fetch_app_access_token(os.getenv("FB_APP_ID"),os.getenv("FB_SECRET"))
-        
-        
-        print(accesstoken)
         
         # accesstoken = get_access_token_from_code(request.GET['code'], 'https://' + request.META['HTTP_HOST'] + reverse('facebook_login'), os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))
         # if 'error' in accesstoken.keys():
