@@ -1045,12 +1045,13 @@ def facebook_login(request):
         
         
         print(accesstoken.__dict__.keys())
+        print(accesstoken.request.__dict__.keys())
         print(accesstoken.connection.__dict__.keys())
         print(accesstoken.cookies.__dict__.keys())
         print(accesstoken.headers.__dict__.keys())
-        print(accesstoken.raw.__dict__.keys())
-        print(accesstoken.url.__dict__.keys())
-        print(accesstoken.request.__dict__.keys())
+        print(accesstoken.raw._body.__dict__.keys())
+        print(accesstoken.url)
+        
         # accesstoken = get_access_token_from_code(request.GET['code'], 'https://' + request.META['HTTP_HOST'] + reverse('facebook_login'), os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))
         # if 'error' in accesstoken.keys():
         #     messages.error(request, "Sorry, Your session has been expired")
