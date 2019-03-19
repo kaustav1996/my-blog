@@ -1040,7 +1040,7 @@ def facebook_login(request):
             "client_id": os.getenv("FB_APP_ID"),
             "client_secret": os.getenv("FB_SECRET")
         }
-        accesstoken = requests.get('https://graph.facebook.com/oauth/access_token',params=args)
+        accesstoken = requests.get('https://graph.facebook.com/oauth/access_token',params=args)['access_token']
         print(accesstoken)
         # accesstoken = get_access_token_from_code(request.GET['code'], 'https://' + request.META['HTTP_HOST'] + reverse('facebook_login'), os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))
         # if 'error' in accesstoken.keys():
