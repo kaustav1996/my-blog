@@ -1036,10 +1036,10 @@ def facebook_login(request):
     if 'code' in request.GET:
         accesstoken = request.GET['code']
         # accesstoken = get_access_token_from_code(request.GET['code'], 'https://' + request.META['HTTP_HOST'] + reverse('facebook_login'), os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))
-        if 'error' in accesstoken.keys():
-            messages.error(request, "Sorry, Your session has been expired")
-            return render(request, '404.html')
-        graph = GraphAPI(access_token=accesstoken)
+        # if 'error' in accesstoken.keys():
+        #     messages.error(request, "Sorry, Your session has been expired")
+        #     return render(request, '404.html')
+        # graph = GraphAPI(access_token=accesstoken)
         profile = graph.get_object(id='me')
         accesstoken = graph.extend_access_token(os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))['accesstoken']
         hometown = profile['hometown']['name'] if 'hometown' in profile.keys() else ''
