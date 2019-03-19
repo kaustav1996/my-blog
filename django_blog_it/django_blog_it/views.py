@@ -1041,12 +1041,12 @@ def facebook_login(request):
             "client_secret": os.getenv("FB_SECRET")
         }
         accesstoken = requests.get('https://graph.facebook.com/oauth/access_token',params=args)
+        print(accesstoken)
         # accesstoken = get_access_token_from_code(request.GET['code'], 'https://' + request.META['HTTP_HOST'] + reverse('facebook_login'), os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))
         # if 'error' in accesstoken.keys():
         #     messages.error(request, "Sorry, Your session has been expired")
         #     return render(request, '404.html')
         graph = GraphAPI(access_token=accesstoken)
-        profile = graph.get_object("me")
         accesstoken = graph.extend_access_token(os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))['accesstoken']
         hometown = profile['hometown']['name'] if 'hometown' in profile.keys() else ''
         location = profile['location']['name'] if 'location' in profile.keys() else ''
