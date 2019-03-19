@@ -1031,28 +1031,15 @@ def google_login(request):
                + "&state=1235dfghjkf123"
         return HttpResponseRedirect(rty)
 
-def get_access_token_from_code(code, redirect_uri, app_id, app_secret):
-        """Get an access token from the "code" returned from an OAuth dialog.
-        Returns a dict containing the user-specific access token and its
-        expiration date (if applicable).
-        """
-        args = {
-            "code": code,
-            "redirect_uri": redirect_uri,
-            "client_id": app_id,
-            "client_secret": app_secret,
-        }
 
-        return requests.get(
-            "{0}/oauth/access_token".format('3.2'), args
-        )
 def facebook_login(request):
     if 'code' in request.GET:
-        accesstoken = get_access_token_from_code(request.GET['code'], 'https://' + request.META['HTTP_HOST'] + reverse('facebook_login'), os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))
+        accesstoken = facebook.get_access_token('FB_APP_ID', 'FB_SECRET') 
+        # accesstoken = get_access_token_from_code(request.GET['code'], 'https://' + request.META['HTTP_HOST'] + reverse('facebook_login'), os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))
         if 'error' in accesstoken.keys():
             messages.error(request, "Sorry, Your session has been expired")
             return render(request, '404.html')
-        graph = GraphAPI(accesstoken['access_token'])
+        graph = GraphAPI(access_token=accesstoken)
         profile = graph.get_object(id='me')
         accesstoken = graph.extend_access_token(os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))['accesstoken']
         hometown = profile['hometown']['name'] if 'hometown' in profile.keys() else ''
