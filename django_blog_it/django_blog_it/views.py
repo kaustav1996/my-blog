@@ -1047,6 +1047,19 @@ def fetch_app_access_token(fb_app_id, fb_app_secret):
     else:
         return None
 
+def long_live_token(fb_app_id, fb_app_secret,accesstoken):
+    resp = urllib.request.urlopen(
+		'https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=' +
+		fb_app_id + '&client_secret=' + fb_app_secret +
+		'&fb_exchange_token='+accesstoken)
+    if resp.getcode() == 200:
+        s=str(resp.read().decode('utf-8'))
+        s=json.loads(s)
+        print (s)
+        return s['access_token']
+    else:
+        return None
+
 def facebook_login(request):
     if 'code' in request.GET:
         # args = {
@@ -1064,7 +1077,7 @@ def facebook_login(request):
         #     messages.error(request, "Sorry, Your session has been expired")
         #     return render(request, '404.html')
         graph = GraphAPI(access_token=accesstoken)
-        accesstoken = graph.extend_access_token(graph,os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))['accesstoken']
+        accesstoken = long_live_token(graph,os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"),accesstoken)
         profile = graph.get_object("me")
         hometown = profile['hometown']['name'] if 'hometown' in profile.keys() else ''
         location = profile['location']['name'] if 'location' in profile.keys() else ''
