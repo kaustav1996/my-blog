@@ -19,6 +19,9 @@ from .models import Menu, Post, PostHistory, Category, Tags, Image_File, \
     Post_Slugs
 from .forms import *
 from django.conf import settings
+import datetime
+from facebook import *
+
 try:
     from django.contrib.auth import get_user_model
     User = get_user_model()
