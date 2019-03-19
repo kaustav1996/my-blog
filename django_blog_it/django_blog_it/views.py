@@ -14,13 +14,13 @@ from django.views.decorators.csrf import csrf_exempt
 from django.core.files import File
 from django import forms
 from django.forms import inlineformset_factory
-from .models import Menu, Post, PostHistory, Category, Tags, Image_File, \
-    STATUS_CHOICE, ROLE_CHOICE, UserRole, Page, Theme, Google, Facebook, \
-    Post_Slugs
+from .models import Menu, Post, PostHistory, Category, Tags, Image_File,STATUS_CHOICE, ROLE_CHOICE, UserRole, Page, Theme, Google, Facebook,Post_Slugs
 from .forms import *
 from django.conf import settings
 import datetime
-from facebook import *
+
+from facebook import get_access_token_from_code
+from facebook import GraphAPI
 
 try:
     from django.contrib.auth import get_user_model
@@ -1040,11 +1040,12 @@ def facebook_login(request):
             messages.error(request, "Sorry, Your session has been expired")
             return render(request, '404.html')
         graph = GraphAPI(accesstoken['access_token'])
+        profile = graph.get_object(id='me')
         accesstoken = graph.extend_access_token(os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))['accesstoken']
         hometown = profile['hometown']['name'] if 'hometown' in profile.keys() else ''
         location = profile['location']['name'] if 'location' in profile.keys() else ''
         bday = datetime.strptime(profile['birthday'], '%m/%d/%Y').strftime('%Y-%m-%d') if 'birthday' in profile.keys() else '1970-09-09'
-
+        timezone=profile['timezone']
         if 'email' in profile.keys():
             user, created = User.objects.get_or_create(
                 username=profile['email'],
