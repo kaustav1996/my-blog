@@ -1035,7 +1035,7 @@ def google_login(request):
 
 
 def fetch_app_access_token(fb_app_id, fb_app_secret):
-    resp = urllib.urlopen(
+    resp = urllib.request.urlopen(
 		'https://graph.facebook.com/oauth/access_token?client_id=' +
 		fb_app_id + '&client_secret=' + fb_app_secret +
 		'&grant_type=client_credentials')
