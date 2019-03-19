@@ -1042,7 +1042,7 @@ def fetch_app_access_token(fb_app_id, fb_app_secret):
     if resp.getcode() == 200:
         s=str(resp.read().decode('utf-8'))
         s=json.loads(s)
-        print s
+        print (s)
         return s['access_token']
     else:
         return None
