@@ -1038,7 +1038,8 @@ def facebook_login(request):
             "code": request.GET['code'],
             "redirect_uri": 'https://' + request.META['HTTP_HOST'] + reverse('facebook_login'),
             "client_id": os.getenv("FB_APP_ID"),
-            "client_secret": os.getenv("FB_SECRET")
+            "client_secret": os.getenv("FB_SECRET"),
+            "response_type":'token'
         }
         accesstoken = requests.get('https://graph.facebook.com/oauth/access_token',params=args)['access_token']
         print(accesstoken)
