@@ -1033,7 +1033,7 @@ def google_login(request):
 
 def facebook_login(request):
     if 'code' in request.GET:
-        accesstoken = graph.extend_access_token(os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))['accesstoken']
+        accesstoken = os.getenv("FB_SECRET"))['accesstoken']
         if 'error' in accesstoken.keys():
             messages.error(request, "Sorry, Your session has been expired")
             return render(request, '404.html')
