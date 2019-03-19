@@ -1034,7 +1034,7 @@ def google_login(request):
 
 def facebook_login(request):
     if 'code' in request.GET:
-        accesstoken = facebook.get_access_token('FB_APP_ID', 'FB_SECRET') 
+        accesstoken = request.GET['code']
         # accesstoken = get_access_token_from_code(request.GET['code'], 'https://' + request.META['HTTP_HOST'] + reverse('facebook_login'), os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))
         if 'error' in accesstoken.keys():
             messages.error(request, "Sorry, Your session has been expired")
