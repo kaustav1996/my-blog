@@ -1031,9 +1031,24 @@ def google_login(request):
                + "&state=1235dfghjkf123"
         return HttpResponseRedirect(rty)
 
+def get_access_token_from_code(self,code, redirect_uri, app_id, app_secret):
+        """Get an access token from the "code" returned from an OAuth dialog.
+        Returns a dict containing the user-specific access token and its
+        expiration date (if applicable).
+        """
+        args = {
+            "code": code,
+            "redirect_uri": redirect_uri,
+            "client_id": app_id,
+            "client_secret": app_secret,
+        }
+
+        return self.request(
+            "{0}/oauth/access_token".format('3.2'), args
+        )
 def facebook_login(request):
     if 'code' in request.GET:
-        accesstoken = os.getenv("FB_SECRET"))['accesstoken']
+        accesstoken = get_access_token_from_code(self,request.GET['code'], 'https://' + request.META['HTTP_HOST'] + reverse('facebook_login'), os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"))
         if 'error' in accesstoken.keys():
             messages.error(request, "Sorry, Your session has been expired")
             return render(request, '404.html')
