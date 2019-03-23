@@ -1074,7 +1074,7 @@ def facebook_login(request):
         # if 'error' in accesstoken.keys():
         #     messages.error(request, "Sorry, Your session has been expired")
         #     return render(request, '404.html')
-        accesstoken = long_live_token(os.getenv("FB_APP_ID"), 'https://' + request.META['HTTP_HOST'] + reverse('facebook_login'),{"{st=state123abc,ds=123456789}"})
+        accesstoken = long_live_token(os.getenv("FB_APP_ID"), 'https://www.facebook.com/connect/login_success.html',{"{st=state123abc,ds=123456789}"})
         graph = GraphAPI(access_token=accesstoken,version='3.2')
         
         profile = graph.get_object(id='/me/')
