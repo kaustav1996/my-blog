@@ -1051,7 +1051,7 @@ def long_live_token(fb_app_id, fb_app_secret,accesstoken):
 
     app_id = fb_app_id
     app_secret = fb_app_secret
-    user_short_token = accesstoken
+    user_short_token = 'EAAf6kfKuMewBAA31EwFcZCQ6XbUzj4yZAcsm4nxlXo78ocW9MRZAH8gBruCegCC1KDVldbwMsZCdBpdxvWUMxhWVZCCg4JeNsDZBgLip3DHHygMzkz1H89WCg5coBrsob0ZBzrEgKl4CaAzKU18TGRZBM2DXq67khFxBL5YjlfFzG4CZBZCwCJ1nIBeFRGom6ZCnP28lADXKmZA3wgJtszQVZCx6b'
     access_token_url = "https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id={}&client_secret={}&fb_exchange_token={}".format(app_id, app_secret, user_short_token)
 
     r = requests.get(access_token_url)
