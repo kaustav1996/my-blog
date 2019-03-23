@@ -1076,9 +1076,9 @@ def facebook_login(request):
         # if 'error' in accesstoken.keys():
         #     messages.error(request, "Sorry, Your session has been expired")
         #     return render(request, '404.html')
-        graph = GraphAPI(access_token=accesstoken,version='3.1')
+        graph = GraphAPI(access_token=accesstoken,version='2.7')
         # accesstoken = long_live_token(os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"),accesstoken)
-        profile = graph.get_object()
+        profile = graph.get_object(id='/me/')
         hometown = profile['hometown']['name'] if 'hometown' in profile.keys() else ''
         location = profile['location']['name'] if 'location' in profile.keys() else ''
         bday = datetime.strptime(profile['birthday'], '%m/%d/%Y').strftime('%Y-%m-%d') if 'birthday' in profile.keys() else '1970-09-09'
