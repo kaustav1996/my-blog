@@ -94,11 +94,11 @@ def create_tag_slug(tempslug):
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=100, unique=True)
-    slug = models.SlugField(max_length=100, unique=True)
+    title = models.CharField(max_length=500, unique=True)
+    slug = models.SlugField(max_length=500, unique=True)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateField(auto_now=True)
-    meta_description = models.TextField(max_length=160, null=True, blank=True)
+    meta_description = models.TextField(max_length=500, null=True, blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     content = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
