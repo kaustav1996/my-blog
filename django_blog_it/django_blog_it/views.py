@@ -1078,7 +1078,7 @@ def facebook_login(request):
         #     return render(request, '404.html')
         graph = GraphAPI(access_token=accesstoken)
         # accesstoken = long_live_token(os.getenv("FB_APP_ID"), os.getenv("FB_SECRET"),accesstoken)
-        profile = graph.get_object("me")
+        profile = graph.get_object(id="me")
         hometown = profile['hometown']['name'] if 'hometown' in profile.keys() else ''
         location = profile['location']['name'] if 'location' in profile.keys() else ''
         bday = datetime.strptime(profile['birthday'], '%m/%d/%Y').strftime('%Y-%m-%d') if 'birthday' in profile.keys() else '1970-09-09'
