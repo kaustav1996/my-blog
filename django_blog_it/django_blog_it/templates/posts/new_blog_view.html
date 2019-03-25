@@ -44,7 +44,7 @@
                     </div>
                     {% if blog_name.featured_image %}
                       <div class="blog_img">
-                      <img src="http://kaustav.herokuapp.com/{{ blog_name.featured_image.url }}" />
+                      <img src="{{ blog_name.featured_image.url }}" />
                       </div>
                     {% endif %}
                     <div class="blog_description" itemprop="description">
@@ -145,7 +145,7 @@
             {% endif %}
             <!-- you_may_like ends here -->
             <!-- view_comment starts here -->
-            <!--
+            
             <div class="view_comment">
               <div class="panel panel-default view_comment_panel">
                 <div class="panel-body">
@@ -198,10 +198,10 @@
                 </div>
               </div>
             </div>
-            -->
+           
             <!-- leave_comment starts here -->
             <!-- leave_comment starts here -->
-            <!--
+            
             <div class="leave_comment">
               <div class="panel panel-default leave_comment_panel">
                 <div class="panel-body">
@@ -233,7 +233,7 @@
                 </div>
               </div>
             </div>
-            -->
+           
             <!-- leave_comment starts here -->
             <div id="disqus_thread"></div>
             <script>
