@@ -44,7 +44,7 @@
                     </div>
                     {% if blog_name.featured_image %}
                       <div class="blog_img">
-                      <img src="{{ blog_name.featured_image.url }}" />
+                      <img src="{{ blog_name.featured_image.url|replace('%3A', ':') }}" />
                       </div>
                     {% endif %}
                     <div class="blog_description" itemprop="description">
@@ -157,7 +157,7 @@
                     <div class="row">
                       <div class="col-md-12">
                           <div class="blog-comment">
-                          <ul class="comments">
+                          <!-- <ul class="comments">
                           <li class="clearfix">
                             <img src="http://bootdey.com/img/Content/user_1.jpg" class="avatar" alt="">
                             <div class="post-comments">
@@ -190,7 +190,7 @@
                                 </li>
                             </ul>
                           </li>
-                          </ul>
+                          </ul> -->
                         </div>
                       </div>
                     </div>

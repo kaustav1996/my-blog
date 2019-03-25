@@ -106,7 +106,7 @@
                             </div>
                             {% if blog.featured_image %}
                                 <div class="blog_img">
-                                  <img src="{{ blog.featured_image.url }}" />
+                                  <img src="{{ blog.featured_image.url|replace('%3A', ':') }}" />
                                 </div>
                             {% endif %}
                             <div class="blog_content_container">
