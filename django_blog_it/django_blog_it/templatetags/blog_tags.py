@@ -4,6 +4,7 @@ from django import template
 from django_blog_it.django_blog_it.models import Post, Tags, Menu
 from django_blog_it.django_blog_it.views import get_user_role
 from django_blog_it import settings
+from django.template.defaultfilters import stringfilter
 
 register = template.Library()
 
@@ -88,3 +89,8 @@ def category_posts(category):
 @register.simple_tag
 def google_analytics_id():
     return os.getenv("GOOGLE_ANALYTICS_ID")
+
+@register.filter
+@stringfilter
+def editurl(s):
+    return s.replace('%3A', ' ');
