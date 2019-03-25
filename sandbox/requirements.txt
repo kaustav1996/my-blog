@@ -10,3 +10,4 @@ dj-database-url==0.4.1
 psycopg2==2.7.7
 microurl==0.1.1
 facebook-sdk
+django-disqus
