@@ -43,8 +43,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'django-blog-it'
-copyright = u'2016, MicroPyramid'
+project = u'Kaustav Banerjee'
+copyright = u'Kaustav Banerjee'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
