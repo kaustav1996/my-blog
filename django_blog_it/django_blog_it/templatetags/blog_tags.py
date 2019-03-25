@@ -93,4 +93,4 @@ def google_analytics_id():
 @register.filter
 @stringfilter
 def editurl(s):
-    return s.replace('%3A', ' ');
+    return s.replace('%3A', ':');
