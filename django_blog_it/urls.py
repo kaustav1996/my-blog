@@ -3,7 +3,8 @@ from django.conf.urls.static import static
 from .django_blog_it.views import *
 from .posts.views import *
 from .settings import MEDIA_URL, MEDIA_ROOT
-
+from django.views.generic.base import RedirectView
+favicon_view = RedirectView.as_view(url='/static/images/favicon.png', permanent=True)
 
 urlpatterns = [
     url(r'^$', Home.as_view(), name='index'),
@@ -109,5 +110,6 @@ urlpatterns = [
     url(r'^dashboard/contactUs/$',
         configure_contact_us, name='configure_contact_us'),
     url(r'^dashboard/change-password/$', ChangePasswordView.as_view(), name='change_password'),
+    url(r'^favicon\.ico$', favicon_view),
 
 ] + static(MEDIA_URL, document_root=MEDIA_ROOT)
