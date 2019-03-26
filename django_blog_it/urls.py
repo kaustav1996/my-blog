@@ -4,7 +4,7 @@ from .django_blog_it.views import *
 from .posts.views import *
 from .settings import MEDIA_URL, MEDIA_ROOT
 from django.views.generic.base import RedirectView
-favicon_view = RedirectView.as_view(url='/static/images/favicon.png', permanent=True)
+favicon_view = RedirectView.as_view(url='/static/images/favicon.ico', permanent=True)
 
 urlpatterns = [
     url(r'^$', Home.as_view(), name='index'),
