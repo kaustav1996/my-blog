@@ -97,9 +97,9 @@
                             <div class="share_more">
                                 <span class="share">
                                   <ul class="list-inline">
-                                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://kaustav.herokuapp.com{% url 'blog_post_view' blog_slug=blog.slug %}&t={{blog.title}}"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="https://twitter.com/intent/tweet?text={{blog.title}}&url=https://kaustav.herokuapp.com{% url 'blog_post_view' blog_slug=blog.slug %}&via={{blog.title}}"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="https://plus.google.com/share?hl=en-US&url=https://kaustav.herokuapp.com{% url 'blog_post_view' blog_slug=blog.slug %}"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://kaustav.herokuapp.com{% url 'blog_post_view' blog_slug=blog.slug %}&t={{blog.title}}"><img src="{%static 'images/facebook.jpg' %}"/></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet?text={{blog.title}}&url=https://kaustav.herokuapp.com{% url 'blog_post_view' blog_slug=blog.slug %}&via={{blog.title}}"><img src="{%static 'images/twitter.jpg' %}"/></a></li>
+                                    <li><a href="https://plus.google.com/share?hl=en-US&url=https://kaustav.herokuapp.com{% url 'blog_post_view' blog_slug=blog.slug %}"><img src="{%static 'images/google_plus.jpg' %}"/></a></li>
                                   </ul>
                                 </span>
                                 <span class="more"><a href="{% url 'blog_post_view' blog_slug=blog.slug %}">Continue Reading</a></span>
