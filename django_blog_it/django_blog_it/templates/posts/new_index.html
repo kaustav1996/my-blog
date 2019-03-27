@@ -97,9 +97,9 @@
                             <div class="share_more">
                                 <span class="share">
                                   <ul class="list-inline">
-                                    <li><i class="fa fa-facebook"><a href="https://www.facebook.com/sharer/sharer.php?u={{short_url}}&t={{blog_name.title}}"></a></i></li>
-                                    <li><i class="fa fa-twitter"><a href="https://twitter.com/intent/tweet?text={{blog_name.title}}&url={{short_url}}&via={{blog_title}}"></a></i></li>
-                                    <li><i class="fa fa-google-plus"><a href="https://plus.google.com/share?hl=en-US&url={{short_url}}"></a></i></li>
+                                    <li><a href="https://www.facebook.com/sharer/sharer.php?u=https://kaustav.herokuapp.com{% url 'blog_post_view' blog_slug=blog.slug %}&t={{blog.title}}"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="https://twitter.com/intent/tweet?text={{blog.title}}&url=https://kaustav.herokuapp.com{% url 'blog_post_view' blog_slug=blog.slug %}&via={{blog.title}}"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="https://plus.google.com/share?hl=en-US&url=https://kaustav.herokuapp.com{% url 'blog_post_view' blog_slug=blog.slug %}"><i class="fa fa-google-plus"></i></a></li>
                                   </ul>
                                 </span>
                                 <span class="more"><a href="{% url 'blog_post_view' blog_slug=blog.slug %}">Continue Reading</a></span>
