@@ -169,7 +169,10 @@ header .navbar-default {
     display: table-cell;
     width: auto;
     position: relative;
-    padding: 25px;
+    padding-top: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 40px;
     vertical-align: top; }
     .main_container .middle_container .main_left_container .blog_list_container .blog_container .blog_content_container .author_category {
       position: absolute;
