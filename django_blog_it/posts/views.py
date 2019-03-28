@@ -172,8 +172,8 @@ class PageView(DetailView):
     slug_url_kwarg = "page_slug"
     context_object_name = "page"
     def get_queryset(self):
-        self.page = get_object_or_404(Page, slug=self.kwargs['page_slug'])
-        return Page.objects.get(page=self.page)
+        # self.page = get_object_or_404(Page, slug=self.kwargs['page_slug'])
+        return Page.objects.get(slug=self.kwargs['page_slug'])
 
 
 def contact_us(request):
