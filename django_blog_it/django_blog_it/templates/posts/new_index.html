@@ -151,7 +151,7 @@
 
             $('#home').addClass('active');
             function redirecToBlog(n) {
-  location.href="{% url 'blog_post_view' blog_slug=%n %}".replace('%n',n);
+  location.href="{% url 'blog_post_view' blog_slug=slug_of_blog %}".replace(/slug_of_blog/g,n);
 }
 
         </script>
