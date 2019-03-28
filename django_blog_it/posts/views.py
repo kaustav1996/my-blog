@@ -176,7 +176,7 @@ class PageView(DetailView):
     #     return Page.objects.get(slug=self.kwargs['page_slug'])
     def get_queryset(self):
         slug = self.kwargs.get(self.slug_url_kwarg)
-        pages = Page.objects.filter(slug=slug)
+        pages = Page.object.get(slug=slug)
         print(pages)
         return pages
 
