@@ -16,8 +16,6 @@ from django.shortcuts import render_to_response
 from django.urls import reverse
 from microurl import google_mini
 from django_blog_it.django_blog_it.models import ContactUsSettings, Post_Slugs
-from django.http import HttpResponse
-from django.template import loader
 
 
 def categories_tags_lists():
@@ -168,20 +166,13 @@ class ArchiveView(ListView):
         return context
 
 
-def PageView(request,page_slug):
-    template = loader.get_template("posts/page.html")
-    slug=page_slug
-    # context_object_name = "page"
-    # def get_queryset(self):
-    #     # self.page = get_object_or_404(Page, slug=self.kwargs['page_slug'])
-    #     return Page.objects.get(slug=self.kwargs['page_slug'])
-    pages = Page.objects.get(slug=slug)
-    print(pages)
-    context = {
-        'page': pages,
-    }
-    return HttpResponse(template.render(context, request))
-    
+class PageView(DetailView):
+    template_name = "posts/page.html"
+    model = Page
+    slug_url_kwarg = "page_slug"
+    context_object_name = "page"
+
+
 def contact_us(request):
     form = ContactForm()
     if request.POST:

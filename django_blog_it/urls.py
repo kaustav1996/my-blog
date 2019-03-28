@@ -58,7 +58,7 @@ urlpatterns = [
         PageDeleteView.as_view(), name='delete_page'),
     url(r'^dashboard/bulk_actions_pages/$',
         BulkActionsPageView.as_view(), name='bulk_actions_pages'),
-    url(r'^(?P<page_slug>[-\w]+)/$', PageView, name='page_view'),
+    url(r'^(?P<page_slug>[-\w]+)/$', PageView.as_view(), name='page_view'),
 
     url(r'^dashboard/upload_photos/$', upload_photos, name='upload_photos'),
     url(r'^dashboard/recent_photos/$', recent_photos, name='recent_photos'),
