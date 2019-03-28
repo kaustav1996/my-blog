@@ -171,6 +171,7 @@ class ArchiveView(ListView):
 class PageView(DetailView):
     template_name = "posts/page.html"
     model = Page
+    context_object_name='page'
 # context_object_name = 'todo_detail'
 
     def get_object(self, **kwargs):
