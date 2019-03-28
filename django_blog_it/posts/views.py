@@ -169,7 +169,7 @@ class ArchiveView(ListView):
 
 
 class PageView(DetailView):
-    # template_name = "posts/page.html"
+    template_name = "posts/page.html"
     model = Page
 # context_object_name = 'todo_detail'
 
