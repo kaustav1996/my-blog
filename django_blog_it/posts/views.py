@@ -170,7 +170,7 @@ class ArchiveView(ListView):
 
 class PageView(DetailView):
     # template_name = "posts/page.html"
-    # model = Page
+    model = Page
     # slug_url_kwarg = "page_slug"
     # context_object_name = "page"
     def get(self, request, *args, **kwargs):
