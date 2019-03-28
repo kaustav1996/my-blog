@@ -94,7 +94,7 @@
                     {% paginate 5 blog_posts %}
                     {% for blog in blog_posts %}
                         <!-- blog_container starts here -->
-                        <div class="blog_container" onclick = "location.href = '{% url &quot;blog_post_view&quot; blog_slug=blog.slug %}';" itemprop="liveBlogUpdate" itemscope itemtype="http://schema.org/BlogPosting">
+                        <div class="blog_container" onclick = "redirecToBlog(blog.slug)" itemprop="liveBlogUpdate" itemscope itemtype="http://schema.org/BlogPosting">
                             <div class="share_more">
                                 <!-- <span class="share">
                                   <ul class="list-inline">
@@ -150,6 +150,9 @@
         <script type="text/javascript">
 
             $('#home').addClass('active');
+            function redirecToBlog(n) {
+  location.href="{% url 'blog_post_view' blog_slug=%n %}".replace('%n',n);
+}
 
         </script>
     {% endblock %}
