@@ -16,6 +16,8 @@ from django.shortcuts import render_to_response
 from django.urls import reverse
 from microurl import google_mini
 from django_blog_it.django_blog_it.models import ContactUsSettings, Post_Slugs
+from django.http import Http404
+from django.shortcuts import redirect
 
 
 def categories_tags_lists():
@@ -167,10 +169,18 @@ class ArchiveView(ListView):
 
 
 class PageView(DetailView):
-    template_name = "posts/page.html"
-    model = Page
-    slug_url_kwarg = "page_slug"
-    context_object_name = "page"
+    # template_name = "posts/page.html"
+    # model = Page
+    # slug_url_kwarg = "page_slug"
+    # context_object_name = "page"
+    def get(self, request, *args, **kwargs):
+        try:
+            self.object = self.get_object()
+        except Http404:
+            # redirect here
+            return redirect('')
+        context = self.get_context_data(object=self.object)
+        return self.render_to_response(context)
 
 
 def contact_us(request):
