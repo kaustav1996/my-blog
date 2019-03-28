@@ -222,6 +222,7 @@ class Page(models.Model):
     meta_description = models.TextField()
     keywords = models.TextField()
     meta_title = models.TextField()
+    #
 
     class Meta:
         ordering = ['-id']

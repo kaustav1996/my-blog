@@ -27,3 +27,4 @@ urlpatterns = [
     # menu management
     url(r'^menu/$', menus, name='menus'),
 ]
+#
