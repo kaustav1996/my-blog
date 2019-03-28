@@ -171,17 +171,15 @@ class ArchiveView(ListView):
 class PageView(DetailView):
     template_name = "posts/page.html"
     model = Page
-    context_object_name='page'
-# context_object_name = 'todo_detail'
+    slug_url_kwarg = "page_slug"
+    context_object_name = "page"
 
-    def get_object(self, **kwargs):
-        print(kwargs)
-        p=Page.objects.get(slug=self.kwargs['page_slug'])
-        print(p.title)
-        print(p.content)
-        return p
-    # slug_url_kwarg = "page_slug"
-    # context_object_name = "page"
+    # def get_object(self, **kwargs):
+    #     print(kwargs)
+    #     p=Page.objects.get(slug=self.kwargs['page_slug'])
+    #     print(p.title)
+    #     print(p.content)
+    #     return p
     # def get(self, request, *args, **kwargs):
     #     try:
     #         self.object = self.get_object()
