@@ -175,7 +175,10 @@ class PageView(DetailView):
 
     def get_object(self, **kwargs):
         print(kwargs)
-        return Page.objects.get(slug=self.kwargs['page_slug'])
+        p=Page.objects.get(slug=self.kwargs['page_slug'])
+        print(p.title)
+        print(p.content)
+        return p
     # slug_url_kwarg = "page_slug"
     # context_object_name = "page"
     # def get(self, request, *args, **kwargs):
