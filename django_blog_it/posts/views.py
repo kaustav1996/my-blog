@@ -171,16 +171,21 @@ class ArchiveView(ListView):
 class PageView(DetailView):
     # template_name = "posts/page.html"
     model = Page
+# context_object_name = 'todo_detail'
+
+    def get_object(self, **kwargs):
+        print(kwargs)
+        return Page.objects.get(slug=self.kwargs['page_slug'])
     # slug_url_kwarg = "page_slug"
     # context_object_name = "page"
-    def get(self, request, *args, **kwargs):
-        try:
-            self.object = self.get_object()
-        except Http404:
-            # redirect here
-            return redirect('')
-        context = self.get_context_data(object=self.object)
-        return self.render_to_response(context)
+    # def get(self, request, *args, **kwargs):
+    #     try:
+    #         self.object = self.get_object()
+    #     except Http404:
+    #         # redirect here
+    #         return redirect('')
+    #     context = self.get_context_data(object=self.object)
+    #     return self.render_to_response(context)
 
 
 def contact_us(request):
