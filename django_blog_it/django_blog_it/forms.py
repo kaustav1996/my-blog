@@ -206,11 +206,6 @@ class ContactForm(forms.Form):
 
     def clean(self):
         cleaned_data = super(ContactForm, self).clean()
-        contact_website = cleaned_data.get('contact_website')
-
-        if contact_website and not contact_website.startswith('http://'):
-            contact_website = 'http://' + contact_website
-            cleaned_data['contact_website'] = contact_website
 
         return cleaned_data
 
@@ -218,7 +213,7 @@ class ContactForm(forms.Form):
         super(ContactForm, self).__init__(*args, **kwargs)
         self.fields['contact_name'].widget.attrs['placeholder'] = "Enter Your Name (Required)"
         self.fields['contact_email'].widget.attrs['placeholder'] = "Enter Your Email (Required)"
-        self.fields['contact_website'].widget.attrs['placeholder'] = "Enter Your Website (Required)"
+        self.fields['contact_website'].widget.attrs['placeholder'] = "Enter Your Website"
         self.fields['content'].widget.attrs['placeholder'] = "What do you want to say?"
         for field in iter(self.fields):
             self.fields[field].widget.attrs.update({
