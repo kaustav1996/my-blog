@@ -214,12 +214,12 @@ def contact_us(request):
             # email to admin
             subject = 'Blog Suggestions - ' + form.cleaned_data.get("contact_name")
             from_email = form.cleaned_data.get("contact_email")
-            context = Context({
+            context = {
                 "NAME_OF_USER": form.cleaned_data.get("contact_name"),
                 "WEBSITE_OF_USER": form.cleaned_data.get("contact_website"),
                 "USER_DESCRIPTION": form.cleaned_data.get("content"),
                 "BLOG_TITLE": settings.BLOG_TITLE
-            })
+            }
             html_content = render_to_response('emails/email_to_admin.html', context).content.decode("utf-8")
             msg = EmailMultiAlternatives(subject, subject, from_email, [contact_us.email_admin])
             # msg.attach(html_content, 'text/html')
@@ -228,10 +228,10 @@ def contact_us(request):
             # email to user
             subject = 'Thank you for contacting us - ' + settings.BLOG_TITLE
             from_email = contact_us.from_email
-            context = Context({
+            context = {
                 "BODY_USER": contact_us.body_user,
                 "BLOG_TITLE": settings.BLOG_TITLE
-            })
+            }
             html_content = render_to_response('emails/email_to_user.html', context).content.decode("utf-8")
             headers = {'Reply-To': contact_us.reply_to_email}
             msg = EmailMultiAlternatives(subject, subject, from_email, [form.cleaned_data.get("contact_email")], headers=headers)
