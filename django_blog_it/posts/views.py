@@ -245,6 +245,7 @@ def contact_us(request):
             from_email = form.cleaned_data.get("contact_email")
             context = {
                 "NAME_OF_USER": form.cleaned_data.get("contact_name"),
+                "EMAIL_OF_USER":from_email,
                 "WEBSITE_OF_USER": form.cleaned_data.get("contact_website"),
                 "USER_DESCRIPTION": form.cleaned_data.get("content"),
                 "BLOG_TITLE": settings.BLOG_TITLE

@@ -198,7 +198,7 @@ class ContactForm(forms.Form):
     contact_name = forms.CharField(max_length=128, required=True)
     contact_email = forms.EmailField(required=True)
     contact_website = forms.URLField(
-        max_length=200, required=True, help_text="Enter Your Website URL here")
+        max_length=200, help_text="Enter Your Website URL here")
     content = forms.CharField(
         required=True,
         widget=forms.Textarea
