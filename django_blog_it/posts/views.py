@@ -19,9 +19,9 @@ from django_blog_it.django_blog_it.models import ContactUsSettings, Post_Slugs
 from django.http import Http404
 from django.shortcuts import redirect
 import smtplib
-from email.MIMEMultipart import MIMEMultipart
-from email.MIMEBase import MIMEBase
-from email.MIMEText import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.base import MIMEBase
+from email.text import MIMEText
 from email.Utils import COMMASPACE, formatdate
 from email import Encoders
 
