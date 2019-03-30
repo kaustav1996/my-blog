@@ -1,2 +1,26 @@
-<h3>{{ page.title }}</h3>
-{{ page.content }}
+{% extends 'posts/new_base.html' %}
+{% load blog_tags %}
+{% block blog_content %}
+
+
+
+  <div class="blog_detail_container" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="blog_details">
+      <div class="panel panel-default blog_panel">
+        <div class="panel-body">
+          <div class="blog_detail_content">
+                  <div class="blog_title" itemprop="blog-article">
+                    <a href="{% url 'blog_post_view' blog_slug=blog_name.slug %}" itemprop="name headline">{{ page.title }}</a>
+                </div>
+                  
+                  <div class="blog_description" itemprop="description">
+                    {{ page.content|safe }}
+                  </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+                  
+
+{% endblock %}
