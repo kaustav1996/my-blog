@@ -48,7 +48,7 @@
 {% endblock %}
 {% block js_script %}
 {% if GOOGLE_CAPTCHA_SITE_KEY %}
-<script src='https://www.google.com/recaptcha/api.js?render={{ GOOGLE_CAPTCHA_SITE_KEY }}'></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 {% endif %}
    <script>
     $( document ).ready(function() {
