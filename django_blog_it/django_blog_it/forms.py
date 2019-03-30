@@ -214,7 +214,7 @@ class ContactForm(forms.Form):
         self.fields['contact_name'].widget.attrs['placeholder'] = "Enter Your Name (Required)"
         self.fields['contact_email'].widget.attrs['placeholder'] = "Enter Your Email (Required)"
         self.fields['contact_website'].widget.attrs['placeholder'] = "Enter Your Website"
-        self.fields['content'].widget.attrs['placeholder'] = "Enter your feedbact or ask me anything :)"
+        self.fields['content'].widget.attrs['placeholder'] = "Enter your Feedback or Ask me anything :)"
         for field in iter(self.fields):
             self.fields[field].widget.attrs.update({
                 'class': 'form-control'
