@@ -171,7 +171,7 @@ def PageView(request,page_slug):
     p=Page.objects.get(slug=page_slug)
     print(p.title)
     print(p.content)
-    template="post/page.html"
+    template="posts/page.html"
     return render(request, template, {'page': p})
 
 # class PageView(DetailView):
