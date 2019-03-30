@@ -20,8 +20,8 @@ from django.http import Http404
 from django.shortcuts import redirect
 import smtplib
 from email.mime.multipart import MIMEMultipart
-from email.base import MIMEBase
-from email.text import MIMEText
+from email.mime.base import MIMEBase
+from email.mime.text import MIMEText
 from email.Utils import COMMASPACE, formatdate
 from email import Encoders
 
