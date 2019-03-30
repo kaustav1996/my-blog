@@ -1,7 +1,7 @@
 {% extends 'posts/new_base.html' %}
-{% block main_content %}
+<!-- {% block content %} -->
 {% load blog_tags %}
-<!-- {% block blog_content %} -->
+{% block blog_content %}
 
 
 
@@ -11,7 +11,7 @@
         <div class="panel-body">
           <div class="blog_detail_content">
                   <div class="blog_title" itemprop="blog-article">
-                    <h3>{{ page.title }}</h>
+                    <h3>{{ page.title }}</h3>
                 </div>
                   
                   <div class="blog_description" itemprop="description">
