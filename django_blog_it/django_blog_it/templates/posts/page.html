@@ -1,7 +1,5 @@
 {% extends 'posts/new_base.html' %}
 {% block content %}
-{% for p in page %}
-<h3>{{ p.title }}</h3>
-<p>{{ p.content }}</p>
-{% endfor %}
+<h3>{{ page.title }}</h3>
+<p>{{ page.content }}</p>
 {% endblock %}

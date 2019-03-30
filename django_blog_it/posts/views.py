@@ -167,13 +167,19 @@ class ArchiveView(ListView):
         context.update(categories_tags_lists())
         return context
 
+def PageView(request,page_slug):
+    p=Page.objects.get(slug=page_slug)
+    print(p.title)
+    print(p.content)
+    template="post/page.html"
+    return render(request, template, {'page': p})
 
-class PageView(DetailView):
-    template_name = "posts/page.html"
-    model = Page
-    slug_field = 'slug'
-    slug_url_kwarg = "page_slug"
-    context_object_name = "page"
+# class PageView(DetailView):
+#     template_name = "posts/page.html"
+#     model = Page
+#     slug_field = 'slug'
+#     slug_url_kwarg = "page_slug"
+#     context_object_name = "page"
 
     # def get_object(self, **kwargs):
     #     print(kwargs)
