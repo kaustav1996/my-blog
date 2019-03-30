@@ -50,11 +50,6 @@
 {% if GOOGLE_CAPTCHA_SITE_KEY %}
 <script src='https://www.google.com/recaptcha/api.js?render={{ GOOGLE_CAPTCHA_SITE_KEY }}'></script>
 {% endif %}
-<script>
-grecaptcha.ready(function() {
-      grecaptcha.execute('GOOGLE_CAPTCHA_SITE_KEY', {action: 'contactpage'});
-  });
-</script>
    <script>
     $( document ).ready(function() {
       $('#myModal').modal('hide');
