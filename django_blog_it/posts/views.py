@@ -18,6 +18,35 @@ from microurl import google_mini
 from django_blog_it.django_blog_it.models import ContactUsSettings, Post_Slugs
 from django.http import Http404
 from django.shortcuts import redirect
+import smtplib
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEBase import MIMEBase
+from email.MIMEText import MIMEText
+from email.Utils import COMMASPACE, formatdate
+from email import Encoders
+
+
+def send_mail(send_from, send_to, subject, text, files=[]):
+  smtp = smtplib.SMTP('smtp.gmail.com', 587)
+  smtp.ehlo()
+  smtp.starttls()
+  smtp.ehlo()
+  smtp.login("kaustavsmailbox21@gmail.com", "kaustav@432123")
+  msg = MIMEMultipart()
+  msg['From'] = send_from
+  msg['To'] = ','.join(send_to)
+  msg['Date'] = formatdate(localtime=True)
+  msg['Subject'] = subject
+  msg.attach( MIMEText(text,'html') )
+  for f in files:
+    part = MIMEBase('application', "octet-stream")
+    part.set_payload( open(f,"rb").read() )
+    Encoders.encode_base64(part)
+    part.add_header('Content-Disposition', 'attachment; filename="%s"' % os.path.basename(f))
+    msg.attach(part)
+  smtp.sendmail(send_from, send_to, msg.as_string())
+  smtp.close()
+
 
 
 def categories_tags_lists():
@@ -221,10 +250,11 @@ def contact_us(request):
                 "BLOG_TITLE": settings.BLOG_TITLE
             }
             html_content = render_to_response('emails/email_to_admin.html', context).content.decode("utf-8")
-            msg = EmailMultiAlternatives(subject, subject, from_email, [contact_us.email_admin])
-            # msg.attach(html_content, 'text/html')
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
+            send_mail(from_email, [contact_us.email_admin] , subject, html_content,[])
+            # msg = EmailMultiAlternatives(subject, subject, from_email, [contact_us.email_admin])
+            # # msg.attach(html_content, 'text/html')
+            # msg.attach_alternative(html_content, "text/html")
+            # msg.send()
             # email to user
             subject = 'Thank you for contacting us - ' + settings.BLOG_TITLE
             from_email = contact_us.from_email
@@ -233,10 +263,11 @@ def contact_us(request):
                 "BLOG_TITLE": settings.BLOG_TITLE
             }
             html_content = render_to_response('emails/email_to_user.html', context).content.decode("utf-8")
-            headers = {'Reply-To': contact_us.reply_to_email}
-            msg = EmailMultiAlternatives(subject, subject, from_email, [form.cleaned_data.get("contact_email")], headers=headers)
-            msg.attach_alternative(html_content, "text/html")
-            msg.send()
+            send_mail(from_email, [form.cleaned_data.get("contact_email")] , subject, html_content,[])
+            # headers = {'Reply-To': contact_us.reply_to_email}
+            # msg = EmailMultiAlternatives(subject, subject, from_email, [form.cleaned_data.get("contact_email")], headers=headers)
+            # msg.attach_alternative(html_content, "text/html")
+            # msg.send()
             # end
             messages.success(
                 request, 'Successfully Sent your contact us details.')
