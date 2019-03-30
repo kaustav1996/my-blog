@@ -271,9 +271,9 @@ def contact_us(request):
             # msg.send()
             # end
             messages.success(
-                request, 'Successfully Sent your contact us details.')
+                request, 'Successfully Submitted !! I will get back to you soon.')
             data = {'error': False,
-                    'response': 'Successfully Sent your contact us details.'}
+                    'response': 'Successfully Submitted !! I will get back to you soon.'}
         else:
             data = {'error': True, 'response': form.errors}
         return JsonResponse(data)
