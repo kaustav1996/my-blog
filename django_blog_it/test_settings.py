@@ -26,14 +26,33 @@ INSTALLED_APPS = (
     'simple_pagination',
     'django_blog_it.django_blog_it',
     'django_blog_it.posts',
+    # 'django_blog_it.payments.apps.PaymentsConfig',
+    'django_blog_it.payments',
 )
 
 
-import dj_database_url
 
-DATABASES = {
-   'default': dj_database_url.config(conn_max_age=600)
-}
+if 'ON_HEROKU' in os.environ:
+    import dj_database_url
+
+    DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600)
+    }
+else:
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'mydb',
+            'USER': 'postgres',
+            'PASSWORD': 'kaustav@123',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
+
+
+
 
 ALLOWED_HOSTS = ["127.0.0", "localhost","*"]
 LANGUAGE_CODE = 'en-us'
@@ -76,3 +95,5 @@ EMAIL_HOST    = 'smtp.gmail.com'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_USER = 'kaustavsmailbox21@gmail.com'
 EMAIL_HOST_PASSWORD = 'kaustav@432123'
+STRIPE_SECRET_KEY = 'sk_test_j8ULflzHxbsXvSMaEHAGXFVl003H8o86RT'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_ivFuxlMPRIwblreWKSoYKT8f00TsVpGygT'

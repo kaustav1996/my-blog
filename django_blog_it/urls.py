@@ -4,6 +4,10 @@ from .django_blog_it.views import *
 from .posts.views import *
 from .settings import MEDIA_URL, MEDIA_ROOT
 from django.views.generic.base import RedirectView
+from .payments import urls as payment_urls
+
+from django.conf.urls import include 
+
 favicon_view = RedirectView.as_view(url='/static/images/favicon.ico', permanent=True)
 
 urlpatterns = [
@@ -13,7 +17,7 @@ urlpatterns = [
     url(r'^blog/tags/(?P<tag_slug>[-\w]+)/$', SelectedTagView.as_view(), name='selected_tag'),
     url(r'^blog/(?P<year>\w{0,})/(?P<month>\w{0,})/$', ArchiveView.as_view(), name='archive_posts'),
     url(r'^blog/(?P<blog_slug>[-\w]+)/$', BlogPostView.as_view(), name='blog_post_view'),
-
+    url(r'^payments/', include(payment_urls), name='payments'),
     url(r'^dashboard/$', AdminLoginView.as_view(), name='admin_login'),
     url(r'^dashboard/gplus/$', google_login, name='google_login'),
     url(r'^fb/$', facebook_login, name='facebook_login'),
