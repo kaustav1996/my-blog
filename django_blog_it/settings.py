@@ -12,3 +12,5 @@ BLOG_TITLE = "Kaustav Banerjee"
 BLOG_DESCRIPTION = "Travel , Music , Videos and Geeky Fun"
 BLOG_KEYWORDS = "travel , music , video , song , movie , geek , comics , anime"
 BLOG_AUTHOR = "kauxtav1996"
+STRIPE_SECRET_KEY = 'sk_test_j8ULflzHxbsXvSMaEHAGXFVl003H8o86RT'
+STRIPE_PUBLISHABLE_KEY = 'pk_test_ivFuxlMPRIwblreWKSoYKT8f00TsVpGygT'
