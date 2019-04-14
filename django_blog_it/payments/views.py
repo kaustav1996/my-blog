@@ -9,7 +9,7 @@ import os
 stripe.api_key = os.getenv('STRIPE_SECRET_KEY') # new
 
 class PaymentPage(TemplateView):
-    template_name = 'home.html'
+    template_name = 'payments/home.html'
     def get_context_data(self, **kwargs): # new
         context = super().get_context_data(**kwargs)
         context['key'] = os.getenv('STRIPE_PUBLISHABLE_KEY')
@@ -23,4 +23,4 @@ def charge(request): # new
             description='Donate Kaustav Banerjee',
             source=request.POST.get('stripeToken')
         )
-        return render(request, 'charge.html')
+        return render(request, 'paymentscharge.html')
