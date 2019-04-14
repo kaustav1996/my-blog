@@ -6,13 +6,13 @@ from django.views.generic.base import TemplateView
 from django.shortcuts import render # new
 import os
 
-stripe.api_key = os.environ('STRIPE_SECRET_KEY') # new
+stripe.api_key = os.getenv('STRIPE_SECRET_KEY') # new
 
 class PaymentPage(TemplateView):
     template_name = 'home.html'
     def get_context_data(self, **kwargs): # new
         context = super().get_context_data(**kwargs)
-        context['key'] = os.environ('STRIPE_PUBLISHABLE_KEY')
+        context['key'] = os.getenv('STRIPE_PUBLISHABLE_KEY')
         return context
 
 def charge(request): # new
