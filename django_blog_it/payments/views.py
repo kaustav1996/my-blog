@@ -17,10 +17,11 @@ class PaymentPage(TemplateView):
 
 def charge(request): # new
     if request.method == 'POST':
+        print('i am here')
         charge = stripe.Charge.create(
             amount=500,
             currency='usd',
             description='Donate Kaustav Banerjee',
             source=request.POST.get('stripeToken')
         )
-        return render(request, 'paymentscharge.html')
+        return render(request, 'payments/charge.html')
