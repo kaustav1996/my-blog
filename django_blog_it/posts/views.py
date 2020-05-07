@@ -27,11 +27,11 @@ from email import encoders
 
 
 def send_mail(send_from, send_to, subject, text, files=[]):
-  smtp = smtplib.SMTP('smtp.gmail.com', 587)
+  smtp = smtplib.SMTP(os.getenv("EMAIL_HOST"), os.getenv("EMAIL_PORT"))
   smtp.ehlo()
   smtp.starttls()
   smtp.ehlo()
-  smtp.login("kaustavsmailbox21@gmail.com", "kaustav@432123")
+  smtp.login(os.getenv("EMAIL_HOST_USER"), os.getenv("EMAIL_HOST_PASSWORD"))
   msg = MIMEMultipart()
   msg['From'] = send_from
   msg['To'] = ','.join(send_to)
