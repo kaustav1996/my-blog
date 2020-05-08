@@ -27,7 +27,7 @@ from email import encoders
 
 
 def send_mail(send_from, send_to, subject, text, files=[]):
-  smtp = smtplib.SMTP('smtpout.secureserver.net', 465)
+  smtp = smtplib.SMTP('smtpout.secureserver.net', 587)
   smtp.ehlo()
   smtp.starttls()
   smtp.ehlo()
