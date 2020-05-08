@@ -27,11 +27,11 @@ from email import encoders
 
 
 def send_mail(send_from, send_to, subject, text, files=[]):
-  smtp = smtplib.SMTP('smtpout.secureserver.net', 587)
+  smtp = smtplib.SMTP(os.getenv('EMAIL_HOST'), os.getenv('EMAIL_PORT'))
   smtp.ehlo()
   smtp.starttls()
   smtp.ehlo()
-  smtp.login("kaustav@banerjee.life", "kaustav@123")
+  smtp.login(os.getenv('EMAIL_HOST_USER'), os.getenv('EMAIL_HOST_PASSWORD'))
   msg = MIMEMultipart()
   msg['From'] = send_from
   msg['To'] = ','.join(send_to)
@@ -251,7 +251,7 @@ def contact_us(request):
                 "BLOG_TITLE": settings.BLOG_TITLE
             }
             html_content = render_to_response('emails/email_to_admin.html', context).content.decode("utf-8")
-            send_mail(from_email, [contact_us.email_admin] , subject, html_content,[])
+            send_mail(from_email, [os.getenv('DEFAULT_EMAIL')] , subject, html_content,[])
             # msg = EmailMultiAlternatives(subject, subject, from_email, [contact_us.email_admin])
             # # msg.attach(html_content, 'text/html')
             # msg.attach_alternative(html_content, "text/html")
@@ -264,7 +264,7 @@ def contact_us(request):
                 "BLOG_TITLE": settings.BLOG_TITLE
             }
             html_content = render_to_response('emails/email_to_user.html', context).content.decode("utf-8")
-            send_mail(from_email, [form.cleaned_data.get("contact_email")] , subject, html_content,[])
+            send_mail(os.getenv('DEFAULT_EMAIL'), [form.cleaned_data.get("contact_email")] , subject, html_content,[])
             # headers = {'Reply-To': contact_us.reply_to_email}
             # msg = EmailMultiAlternatives(subject, subject, from_email, [form.cleaned_data.get("contact_email")], headers=headers)
             # msg.attach_alternative(html_content, "text/html")
