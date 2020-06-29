@@ -1,4 +1,5 @@
-# My Blog Web App
+My Blog Web App
+===============
 
 Blogging Web App created using Django , jQuery , JavaScript and PostgreSQL
 
